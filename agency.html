@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Minimal streetwear for people in control. Shop AGENCY hoodies, tees, and essentials. SS25 collection available now.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="AGENCY – Own Your Agency">
+  <meta property="og:description" content="Minimal streetwear for people in control.">
+  <meta property="og:type" content="website">
+  <title>AGENCY – Own Your Agency | Minimal Streetwear</title>
+
+  <style>
+    /* ─── Reset ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Variables ───────────────────────────────────────────────── */
+    :root {
+      --black:       #0a0a0a;
+      --white:       #ffffff;
+      --off-white:   #F7F7F5;
+      --light-grey:  #F0EFED;
+      --border:      #E5E5E3;
+      --mid-grey:    #ADADAD;
+      --muted:       #6B6B6B;
+      --font:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --nav-h:       60px;
+      --ann-h:       36px;
+      --max-w:       1400px;
+    }
+
+    /* ─── Base ────────────────────────────────────────────────────── */
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body  {
+      font-family: var(--font);
+      background:  var(--white);
+      color:       var(--black);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a       { color: inherit; text-decoration: none; }
+    button  { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+
+    /* ─── Buttons ─────────────────────────────────────────────────── */
+    .btn {
+      display:         inline-flex;
+      align-items:     center;
+      justify-content: center;
+      padding:         13px 32px;
+      font-size:       0.7rem;
+      font-weight:     700;
+      letter-spacing:  0.16em;
+      text-transform:  uppercase;
+      transition:      background 0.2s, color 0.2s, border-color 0.2s;
+      white-space:     nowrap;
+    }
+    .btn-solid {
+      background: var(--black);
+      color:      var(--white);
+    }
+    .btn-solid:hover { background: #333; }
+
+    .btn-ghost {
+      background:   transparent;
+      color:        var(--black);
+      border:       1px solid var(--black);
+    }
+    .btn-ghost:hover { background: var(--black); color: var(--white); }
+
+    .btn-ghost-light {
+      background:   transparent;
+      color:        var(--white);
+      border:       1px solid rgba(255,255,255,0.45);
+    }
+    .btn-ghost-light:hover { background: var(--white); color: var(--black); }
+
+    /* ─── Announcement bar ────────────────────────────────────────── */
+    .announce-bar {
+      height:          var(--ann-h);
+      background:      var(--black);
+      color:           var(--white);
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      gap:             32px;
+      font-size:       0.65rem;
+      font-weight:     600;
+      letter-spacing:  0.14em;
+      text-transform:  uppercase;
+    }
+    .announce-bar span::before {
+      content:      "·";
+      margin-right: 32px;
+      opacity:      0.4;
+    }
+    .announce-bar span:first-child::before { display: none; }
+
+    /* ─── Navigation ──────────────────────────────────────────────── */
+    .site-nav-wrap {
+      position:      sticky;
+      top:           0;
+      z-index:       200;
+      background:    var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-nav {
+      display:     flex;
+      align-items: center;
+      height:      var(--nav-h);
+      padding:     0 40px;
+      max-width:   var(--max-w);
+      margin:      0 auto;
+      gap:         40px;
+    }
+
+    .nav-logo {
+      font-size:      1.1rem;
+      font-weight:    900;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      flex-shrink:    0;
+    }
+
+    .nav-right {
+      display:     flex;
+      align-items: center;
+      gap:         28px;
+      margin-left: auto;
+    }
+
+    .nav-links {
+      display:     flex;
+      align-items: center;
+      gap:         28px;
+      list-style:  none;
+    }
+
+    .nav-links a {
+      font-size:      0.73rem;
+      font-weight:    500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color:          var(--black);
+      transition:     color 0.2s;
+    }
+    .nav-links a:hover { color: var(--mid-grey); }
+
+    .nav-divider {
+      width:      1px;
+      height:     18px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .nav-icons {
+      display:     flex;
+      align-items: center;
+      gap:         18px;
+    }
+
+    .nav-icon-btn {
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      position:        relative;
+      color:           var(--black);
+      transition:      opacity 0.2s;
+      padding:         4px;
+    }
+    .nav-icon-btn:hover { opacity: 0.4; }
+
+    .cart-badge {
+      position:        absolute;
+      top:             -4px;
+      right:           -5px;
+      width:           15px;
+      height:          15px;
+      background:      var(--black);
+      color:           var(--white);
+      font-size:       0.55rem;
+      font-weight:     800;
+      border-radius:   50%;
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      line-height:     1;
+    }
+
+    /* ─── Hero ────────────────────────────────────────────────────── */
+    .hero {
+      display:    grid;
+      grid-template-columns: 44% 56%;
+      height:     calc(100vh - var(--nav-h) - var(--ann-h));
+      min-height: 580px;
+    }
+
+    /* Left panel: text */
+    .hero-text {
+      background:      var(--off-white);
+      display:         flex;
+      flex-direction:  column;
+      justify-content: flex-end;
+      padding:         56px 52px 72px;
+      position:        relative;
+    }
+
+    .hero-season {
+      font-size:       0.65rem;
+      font-weight:     700;
+      letter-spacing:  0.22em;
+      text-transform:  uppercase;
+      color:           var(--mid-grey);
+      margin-bottom:   28px;
+      display:         flex;
+      align-items:     center;
+      gap:             14px;
+    }
+    .hero-season::before {
+      content:    '';
+      display:    block;
+      width:      28px;
+      height:     1px;
+      background: var(--mid-grey);
+    }
+
+    .hero-headline {
+      font-size:      clamp(3rem, 5.5vw, 5.75rem);
+      font-weight:    900;
+      line-height:    0.92;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
+      margin-bottom:  28px;
+    }
+
+    .hero-sub {
+      font-size:     0.9375rem;
+      color:         var(--muted);
+      line-height:   1.65;
+      max-width:     280px;
+      margin-bottom: 44px;
+      font-weight:   400;
+    }
+
+    .hero-actions {
+      display:   flex;
+      gap:       10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-scroll {
+      position:        absolute;
+      bottom:          28px;
+      left:            52px;
+      font-size:       0.62rem;
+      font-weight:     600;
+      letter-spacing:  0.22em;
+      text-transform:  uppercase;
+      color:           var(--mid-grey);
+      display:         flex;
+      align-items:     center;
+      gap:             12px;
+    }
+    .hero-scroll::after {
+      content:    '';
+      display:    block;
+      width:      24px;
+      height:     1px;
+      background: var(--mid-grey);
+      animation:  pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; width: 24px; }
+      50%       { opacity: 0.4; width: 12px; }
+    }
+
+    /* Right panel: "photo" */
+    .hero-photo {
+      position:   relative;
+      overflow:   hidden;
+      background: #161410;
+    }
+
+    /* Moody fashion gradient — simulates a backlit studio photo */
+    .hero-photo::before {
+      content:    '';
+      position:   absolute;
+      inset:      0;
+      background: linear-gradient(
+        168deg,
+        #1e1a17 0%,
+        #131210 30%,
+        #0e0d0c 60%,
+        #080808 100%
+      );
+    }
+
+    /* Warm centre glow — suggests a lit human figure */
+    .hero-photo::after {
+      content:    '';
+      position:   absolute;
+      inset:      0;
+      background: radial-gradient(
+        ellipse 48% 78% at 50% 42%,
+        rgba(230,210,185,0.14)  0%,
+        rgba(200,175,148,0.08) 38%,
+        transparent            70%
+      );
+    }
+
+    .hero-photo-label {
+      position:       absolute;
+      bottom:         28px;
+      right:          28px;
+      z-index:        1;
+      font-size:      0.62rem;
+      font-weight:    600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color:          rgba(255,255,255,0.28);
+    }
+
+    /* ─── Products section ────────────────────────────────────────── */
+    .products {
+      padding:   88px 40px 112px;
+      max-width: var(--max-w);
+      margin:    0 auto;
+    }
+
+    .products-header {
+      display:         flex;
+      align-items:     flex-end;
+      justify-content: space-between;
+      margin-bottom:   52px;
+    }
+
+    .section-label {
+      font-size:      0.62rem;
+      font-weight:    700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color:          var(--mid-grey);
+      margin-bottom:  10px;
+      display:        flex;
+      align-items:    center;
+      gap:            12px;
+    }
+    .section-label::before {
+      content:    '';
+      display:    block;
+      width:      22px;
+      height:     1px;
+      background: var(--mid-grey);
+    }
+
+    .section-title {
+      font-size:      clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight:    900;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+      line-height:    1;
+    }
+
+    .view-all-link {
+      font-size:      0.7rem;
+      font-weight:    700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding-bottom: 3px;
+      border-bottom:  1.5px solid var(--black);
+      transition:     opacity 0.2s;
+      flex-shrink:    0;
+      align-self:     flex-end;
+    }
+    .view-all-link:hover { opacity: 0.4; }
+
+    /* ─── Product grid ────────────────────────────────────────────── */
+    .product-grid {
+      display:               grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:                   2px;
+    }
+
+    .product-card { background: var(--white); }
+
+    .product-img-wrap {
+      position:     relative;
+      aspect-ratio: 3 / 4;
+      overflow:     hidden;
+    }
+
+    /* Individual product "photo" swatches */
+    .swatch-camel  { background: linear-gradient(150deg, #D4C9BA 0%, #C4B7A6 100%); }
+    .swatch-white  { background: linear-gradient(150deg, #F2EFE9 0%, #E8E4DC 100%); }
+    .swatch-ash    { background: linear-gradient(150deg, #BCBAB6 0%, #ACAAA6 100%); }
+    .swatch-black  { background: linear-gradient(150deg, #1C1C1C 0%, #101010 100%); }
+    .swatch-stone  { background: linear-gradient(150deg, #CCC3B2 0%, #B8AE9C 100%); }
+    .swatch-slate  { background: linear-gradient(150deg, #9EA8AC 0%, #8C989E 100%); }
+
+    /* Faint inner texture highlight */
+    .product-img-wrap::before {
+      content:    '';
+      position:   absolute;
+      inset:      0;
+      background: radial-gradient(
+        ellipse 70% 60% at 50% 30%,
+        rgba(255,255,255,0.18) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .product-sku {
+      position:       absolute;
+      bottom:         14px;
+      left:           14px;
+      font-size:      0.58rem;
+      font-weight:    700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding:        4px 9px;
+      border:         1px solid rgba(0,0,0,0.18);
+      color:          rgba(0,0,0,0.35);
+      background:     rgba(255,255,255,0.4);
+    }
+
+    /* Light label for dark swatches */
+    .swatch-black .product-sku {
+      border-color: rgba(255,255,255,0.2);
+      color:        rgba(255,255,255,0.35);
+      background:   rgba(0,0,0,0.15);
+    }
+
+    /* Badge (New / Low Stock) */
+    .product-badge {
+      position:       absolute;
+      top:            14px;
+      left:           14px;
+      font-size:      0.58rem;
+      font-weight:    800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding:        4px 10px;
+      background:     var(--white);
+      color:          var(--black);
+    }
+    .product-badge.low {
+      background: var(--black);
+      color:      var(--white);
+    }
+
+    /* Add-to-cart slide-up overlay */
+    .atc-bar {
+      position:       absolute;
+      bottom:         0;
+      left:           0;
+      right:          0;
+      background:     var(--black);
+      color:          var(--white);
+      text-align:     center;
+      font-size:      0.65rem;
+      font-weight:    700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding:        13px;
+      transform:      translateY(100%);
+      transition:     transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .product-card:hover .atc-bar { transform: translateY(0); }
+
+    .product-meta {
+      padding:      16px 4px 0;
+    }
+
+    .product-name {
+      font-size:      0.875rem;
+      font-weight:    600;
+      letter-spacing: 0.01em;
+      margin-bottom:  3px;
+    }
+
+    .product-variant {
+      font-size:    0.75rem;
+      color:        var(--muted);
+      margin-bottom: 6px;
+      font-weight:  400;
+    }
+
+    .product-price {
+      font-size:      0.875rem;
+      font-weight:    700;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Editorial split ─────────────────────────────────────────── */
+    .editorial {
+      display:               grid;
+      grid-template-columns: 1fr 1fr;
+      gap:                   2px;
+    }
+
+    .editorial-panel {
+      position:   relative;
+      height:     500px;
+      overflow:   hidden;
+      display:    flex;
+      align-items: flex-end;
+    }
+
+    .ed-dark {
+      background: linear-gradient(160deg, #1C1A18 0%, #0E0D0C 100%);
+    }
+
+    .ed-light {
+      background: var(--light-grey);
+    }
+
+    /* Subtle texture glow inside each panel */
+    .editorial-panel::after {
+      content:        '';
+      position:       absolute;
+      inset:          0;
+      background:     radial-gradient(
+        ellipse 55% 70% at 50% 35%,
+        rgba(255,255,255,0.07) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .ed-content {
+      position: relative;
+      z-index:  1;
+      padding:  40px;
+    }
+
+    .ed-tag {
+      font-size:      0.62rem;
+      font-weight:    700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity:        0.5;
+      margin-bottom:  10px;
+    }
+    .ed-dark .ed-tag { color: var(--white); }
+
+    .ed-title {
+      font-size:      clamp(2rem, 3.5vw, 3rem);
+      font-weight:    900;
+      line-height:    0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom:  24px;
+    }
+    .ed-dark .ed-title { color: var(--white); }
+
+    /* ─── Newsletter strip ────────────────────────────────────────── */
+    .newsletter {
+      background:      var(--black);
+      color:           var(--white);
+      padding:         64px 40px;
+      text-align:      center;
+    }
+
+    .newsletter-eyebrow {
+      font-size:      0.62rem;
+      font-weight:    700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color:          rgba(255,255,255,0.45);
+      margin-bottom:  16px;
+    }
+
+    .newsletter-title {
+      font-size:      clamp(1.8rem, 3vw, 2.75rem);
+      font-weight:    900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom:  10px;
+    }
+
+    .newsletter-sub {
+      font-size:     0.875rem;
+      color:         rgba(255,255,255,0.5);
+      margin-bottom: 36px;
+    }
+
+    .newsletter-form {
+      display:         flex;
+      justify-content: center;
+      gap:             0;
+      max-width:       440px;
+      margin:          0 auto;
+    }
+
+    .newsletter-input {
+      flex:             1;
+      padding:          13px 20px;
+      font-size:        0.8rem;
+      font-family:      var(--font);
+      background:       rgba(255,255,255,0.07);
+      border:           1px solid rgba(255,255,255,0.18);
+      border-right:     none;
+      color:            var(--white);
+      outline:          none;
+      transition:       border-color 0.2s;
+    }
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+    .newsletter-input:focus { border-color: rgba(255,255,255,0.45); }
+
+    .newsletter-submit {
+      padding:        13px 24px;
+      font-size:      0.65rem;
+      font-weight:    700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background:     var(--white);
+      color:          var(--black);
+      border:         1px solid var(--white);
+      cursor:         pointer;
+      transition:     background 0.2s, color 0.2s;
+      font-family:    var(--font);
+    }
+    .newsletter-submit:hover { background: rgba(255,255,255,0.85); }
+
+    /* ─── Footer ──────────────────────────────────────────────────── */
+    .site-footer {
+      background:   var(--off-white);
+      border-top:   1px solid var(--border);
+      padding:      64px 40px 40px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin:    0 auto;
+    }
+
+    .footer-grid {
+      display:               grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap:                   48px;
+      margin-bottom:         60px;
+      padding-bottom:        48px;
+      border-bottom:         1px solid var(--border);
+    }
+
+    .footer-brand-name {
+      font-size:      1.1rem;
+      font-weight:    900;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom:  14px;
+    }
+
+    .footer-brand-desc {
+      font-size:   0.8125rem;
+      color:       var(--muted);
+      line-height: 1.7;
+      max-width:   220px;
+    }
+
+    .footer-col-head {
+      font-size:      0.62rem;
+      font-weight:    700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color:          var(--mid-grey);
+      margin-bottom:  18px;
+    }
+
+    .footer-col-links {
+      list-style: none;
+      display:    flex;
+      flex-direction: column;
+      gap:        11px;
+    }
+
+    .footer-col-links a {
+      font-size:   0.8125rem;
+      color:       var(--muted);
+      transition:  color 0.2s;
+    }
+    .footer-col-links a:hover { color: var(--black); }
+
+    .footer-bottom {
+      display:         flex;
+      align-items:     center;
+      justify-content: space-between;
+      flex-wrap:       wrap;
+      gap:             12px;
+    }
+
+    .footer-copy {
+      font-size:   0.75rem;
+      color:       var(--mid-grey);
+      letter-spacing: 0.02em;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap:     20px;
+    }
+
+    .footer-legal a {
+      font-size:   0.75rem;
+      color:       var(--mid-grey);
+      transition:  color 0.2s;
+    }
+    .footer-legal a:hover { color: var(--black); }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Announcement bar ─────────────────────────────────────────── -->
+  <div class="announce-bar" role="note" aria-label="Site-wide announcement">
+    <span>Free Shipping on Orders Over £150</span>
+    <span>Free Returns Within 28 Days</span>
+    <span>New Drop Every Thursday</span>
+  </div>
+
+  <!-- ── Navigation ───────────────────────────────────────────────── -->
+  <div class="site-nav-wrap">
+    <nav class="site-nav" aria-label="Primary navigation">
+
+      <!-- Logo -->
+      <a href="/" class="nav-logo" aria-label="AGENCY — return to homepage">AGENCY</a>
+
+      <!-- Right rail: links + divider + icons -->
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Journal</a></li>
+        </ul>
+
+        <div class="nav-divider" aria-hidden="true"></div>
+
+        <div class="nav-icons">
+          <!-- Search -->
+          <button class="nav-icon-btn" aria-label="Search">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+          </button>
+
+          <!-- Account -->
+          <button class="nav-icon-btn" aria-label="My account">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </button>
+
+          <!-- Cart -->
+          <button class="nav-icon-btn" aria-label="Cart – 2 items">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span class="cart-badge" aria-hidden="true">2</span>
+          </button>
+        </div>
+      </div>
+
+    </nav>
+  </div>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────── -->
+  <section class="hero" aria-label="Hero — SS25 collection">
+
+    <!-- Text panel -->
+    <div class="hero-text">
+      <p class="hero-season">SS25 Collection</p>
+
+      <h1 class="hero-headline">
+        Own<br>Your<br>Agency
+      </h1>
+
+      <p class="hero-sub">
+        Minimal streetwear for people in control.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#" aria-label="Shop AGENCY hoodies">Shop Hoodies</a>
+        <a class="btn btn-ghost" href="#" aria-label="Shop AGENCY tees">Shop Tees</a>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">Scroll</div>
+    </div>
+
+    <!-- Photo panel (CSS-only studio simulation) -->
+    <div class="hero-photo"
+         role="img"
+         aria-label="Model wearing the AGENCY Core Hoodie in Camel, SS25">
+      <span class="hero-photo-label" aria-hidden="true">Core Hoodie — Camel / £195</span>
+    </div>
+
+  </section>
+
+  <!-- ── Products ─────────────────────────────────────────────────── -->
+  <section class="products" aria-labelledby="products-title">
+
+    <div class="products-header">
+      <div>
+        <p class="section-label">SS25 Drop</p>
+        <h2 class="section-title" id="products-title">New Arrivals</h2>
+      </div>
+      <a class="view-all-link" href="#" aria-label="View all new arrivals">View All</a>
+    </div>
+
+    <div class="product-grid" role="list">
+
+      <!-- 1 → Core Hoodie / Camel -->
+      <article class="product-card" role="listitem">
+        <div class="product-img-wrap swatch-camel">
+          <span class="product-badge" aria-label="New">New</span>
+          <span class="product-sku" aria-hidden="true">AGY-025-CH</span>
+          <div class="atc-bar" aria-hidden="true">Add to Cart</div>
+        </div>
+        <div class="product-meta">
+          <p class="product-name">Core Hoodie</p>
+          <p class="product-variant">Relaxed Fit — Camel</p>
+          <p class="product-price">£195</p>
+        </div>
+      </article>
+
+      <!-- 2 → Blank Tee / White -->
+      <article class="product-card" role="listitem">
+        <div class="product-img-wrap swatch-white">
+          <span class="product-sku" aria-hidden="true">AGY-011-WT</span>
+          <div class="atc-bar" aria-hidden="true">Add to Cart</div>
+        </div>
+        <div class="product-meta">
+          <p class="product-name">Blank Tee</p>
+          <p class="product-variant">Regular Fit — White</p>
+          <p class="product-price">£75</p>
+        </div>
+      </article>
+
+      <!-- 3 → Oversized Hoodie / Ash -->
+      <article class="product-card" role="listitem">
+        <div class="product-img-wrap swatch-ash">
+          <span class="product-badge" aria-label="New">New</span>
+          <span class="product-sku" aria-hidden="true">AGY-026-AS</span>
+          <div class="atc-bar" aria-hidden="true">Add to Cart</div>
+        </div>
+        <div class="product-meta">
+          <p class="product-name">Oversized Hoodie</p>
+          <p class="product-variant">Oversized Fit — Ash</p>
+          <p class="product-price">£215</p>
+        </div>
+      </article>
+
+      <!-- 4 → Essential Tee / Black -->
+      <article class="product-card" role="listitem">
+        <div class="product-img-wrap swatch-black">
+          <span class="product-sku" aria-hidden="true">AGY-012-BK</span>
+          <div class="atc-bar" aria-hidden="true">Add to Cart</div>
+        </div>
+        <div class="product-meta">
+          <p class="product-name">Essential Tee</p>
+          <p class="product-variant">Boxy Fit — Black</p>
+          <p class="product-price">£75</p>
+        </div>
+      </article>
+
+      <!-- 5 → Heavy Fleece Zip / Stone -->
+      <article class="product-card" role="listitem">
+        <div class="product-img-wrap swatch-stone">
+          <span class="product-badge low" aria-label="Low stock">Low Stock</span>
+          <span class="product-sku" aria-hidden="true">AGY-027-ST</span>
+          <div class="atc-bar" aria-hidden="true">Add to Cart</div>
+        </div>
+        <div class="product-meta">
+          <p class="product-name">Heavy Fleece Zip</p>
+          <p class="product-variant">Relaxed Fit — Stone</p>
+          <p class="product-price">£245</p>
+        </div>
+      </article>
+
+      <!-- 6 → Boxy Tee / Slate -->
+      <article class="product-card" role="listitem">
+        <div class="product-img-wrap swatch-slate">
+          <span class="product-sku" aria-hidden="true">AGY-014-SL</span>
+          <div class="atc-bar" aria-hidden="true">Add to Cart</div>
+        </div>
+        <div class="product-meta">
+          <p class="product-name">Boxy Tee</p>
+          <p class="product-variant">Boxy Fit — Slate</p>
+          <p class="product-price">£85</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── Editorial split ──────────────────────────────────────────── -->
+  <section class="editorial" aria-label="Editorial — shop by category">
+
+    <div class="editorial-panel ed-dark">
+      <div class="ed-content">
+        <p class="ed-tag">The Hoodie Edit</p>
+        <h2 class="ed-title">Layer<br>Up.</h2>
+        <a class="btn btn-ghost-light" href="#" aria-label="Shop all AGENCY hoodies">
+          Shop Hoodies
+        </a>
+      </div>
+    </div>
+
+    <div class="editorial-panel ed-light">
+      <div class="ed-content">
+        <p class="ed-tag">Tee Season</p>
+        <h2 class="ed-title">Keep<br>It Clean.</h2>
+        <a class="btn btn-solid" href="#" aria-label="Shop all AGENCY tees">
+          Shop Tees
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── Newsletter ───────────────────────────────────────────────── -->
+  <section class="newsletter" aria-labelledby="newsletter-title">
+    <p class="newsletter-eyebrow">The Inner Circle</p>
+    <h2 class="newsletter-title" id="newsletter-title">Early Access. Always.</h2>
+    <p class="newsletter-sub">Join 40,000+ who get first look at new drops, restocks, and members-only offers.</p>
+    <form class="newsletter-form" action="#" method="post" aria-label="Newsletter sign-up">
+      <label for="email-input" class="sr-only">Email address</label>
+      <input
+        id="email-input"
+        class="newsletter-input"
+        type="email"
+        name="email"
+        placeholder="Your email address"
+        autocomplete="email"
+        required
+      >
+      <button type="submit" class="newsletter-submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+
+      <div class="footer-grid">
+
+        <div>
+          <p class="footer-brand-name">Agency</p>
+          <p class="footer-brand-desc">
+            Minimal streetwear for people in control.
+            Designed in London, built to last.
+          </p>
+        </div>
+
+        <div>
+          <p class="footer-col-head">Shop</p>
+          <ul class="footer-col-links">
+            <li><a href="#">Hoodies</a></li>
+            <li><a href="#">Tees</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Sale</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-head">Help</p>
+          <ul class="footer-col-links">
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-head">Brand</p>
+          <ul class="footer-col-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 AGENCY. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Screen-reader only utility -->
+  <style>
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+  </style>
+
+</body>
+</html>

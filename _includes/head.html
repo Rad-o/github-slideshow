@@ -1,22 +1,74 @@
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>{% if post.title %}{{ post.title }} | {{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+{% assign page_title = page.title | default: site.title %}
+{% assign page_desc  = page.description | default: site.description %}
+{% assign page_url   = page.url | prepend: site.url %}
+{% assign page_image = page.image | default: site.og_image | prepend: site.url %}
 
+<!-- ── Primary meta ───────────────────────────────────────────────── -->
+<title>{{ page_title }}</title>
+<meta name="description"  content="{{ page_desc | strip_html | strip_newlines | truncate: 160 }}">
+<meta name="keywords"     content="{{ page.keywords | default: site.keywords }}">
+<meta name="author"       content="{{ site.author }}">
+<meta name="robots"       content="index, follow">
+<meta name="language"     content="{{ site.lang | default: 'en' }}">
+<link rel="canonical"     href="{{ page_url }}">
+
+<!-- ── Open Graph (Facebook / LinkedIn / AI scrapers) ────────────── -->
+<meta property="og:type"        content="{{ page.og_type | default: 'website' }}">
+<meta property="og:site_name"   content="{{ site.title }}">
+<meta property="og:title"       content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc | strip_html | strip_newlines | truncate: 200 }}">
+<meta property="og:url"         content="{{ page_url }}">
+<meta property="og:image"       content="{{ page_image }}">
+<meta property="og:locale"      content="{{ site.locale | default: 'en_US' }}">
+
+<!-- ── Twitter Card ──────────────────────────────────────────────── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@{{ site.twitter }}">
+<meta name="twitter:creator"     content="@{{ site.twitter }}">
+<meta name="twitter:title"       content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_desc | strip_html | strip_newlines | truncate: 200 }}">
+<meta name="twitter:image"       content="{{ page_image }}">
+
+<!-- ── JSON-LD Structured Data (Schema.org) ──────────────────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ page.schema_type | default: 'WebSite' }}",
+  "name": {{ page_title | jsonify }},
+  "description": {{ page_desc | strip_html | strip_newlines | jsonify }},
+  "url": {{ page_url | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ site.author | jsonify }},
+    "url": {{ site.author_url | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.title | jsonify }},
+    "url": {{ site.url | jsonify }}
+  },
+  "inLanguage": "{{ site.lang | default: 'en' }}",
+  "keywords": {{ site.keywords | jsonify }}
+}
+</script>
+
+<!-- ── Reveal.js styles ───────────────────────────────────────────── -->
+<link rel="stylesheet" href="{{ site.baseurl }}/node_modules/reveal.js/css/reset.css">
 <link rel="stylesheet" href="{{ site.baseurl }}/node_modules/reveal.js/css/reveal.css">
-
-<link rel="stylesheet" href="{{site.baseurl}}/node_modules/reveal.js/css/reset.css">
-<link rel="stylesheet" href="{{site.baseurl}}/node_modules/reveal.js/css/reveal.css">
-<link rel="stylesheet" href="{{site.baseurl}}/node_modules/reveal.js/css/theme/moon.css">
-
-<!-- Theme used for syntax highlighting of code -->
-<link rel="stylesheet" href="{{site.baseurl}}/node_modules/reveal.js/lib/css/monokai.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/node_modules/reveal.js/css/theme/moon.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/node_modules/reveal.js/lib/css/monokai.css">
 
 <!-- Printing and PDF exports -->
 <script>
-	var link = document.createElement( 'link' );
-	link.rel = 'stylesheet';
-	link.type = 'text/css';
-	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
-	document.getElementsByTagName( 'head' )[0].appendChild( link );
+  var link = document.createElement('link');
+  link.rel  = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match(/print-pdf/gi)
+              ? 'css/print/pdf.css'
+              : 'node_modules/reveal.js/css/print/paper.css';
+  document.getElementsByTagName('head')[0].appendChild(link);
 </script>

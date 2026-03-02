@@ -17,9 +17,22 @@ plugins:
   - jemoji
 
 ## personalize your slide show
-title:       github-slideshow
+title:       GitHub Slideshow – Learn Git & GitHub Interactively
 author:      GitHubTeacher
-description: A fun activity for learning Git and GitHub.
+description: >
+  An interactive, hands-on slideshow for learning Git and GitHub.
+  Master version control, branching, pull requests, and collaborative
+  workflows through guided slides and real GitHub exercises.
+url:         "https://githubeacher.github.io"
+baseurl:     ""
+lang:        en
+
+## SEO / social
+keywords:    "git, github, version control, learn git, github tutorial, branching, pull requests, open source, collaborative coding"
+author_url:  "https://github.com/GitHubTeacher"
+twitter:     GitHubTeacher
+og_image:    "/assets/og-preview.png"
+locale:      en_US
 
 sass:
   style:     :compressed

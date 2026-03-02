@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Encourage AI crawlers / LLM training crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://githubeacher.github.io/sitemap.xml
